@@ -1,0 +1,25 @@
+{
+  "name": "hello_work_crawler",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "start": "tsx --env-file=.env src/main.ts",
+    "check_table_structure": "tsx src/test/check_table_structure.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "es-toolkit": "^1.24.0",
+    "googleapis": "^144.0.0",
+    "minimist": "^1.2.8",
+    "playwright": "^1.47.2",
+    "valibot": "^0.42.1"
+  },
+  "devDependencies": {
+    "@types/minimist": "^1.2.5",
+    "@types/node": "^22.7.4",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2"
+  }
+}
