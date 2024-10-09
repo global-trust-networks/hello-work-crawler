@@ -11,7 +11,9 @@ export class SelectionTable extends BasicTable {
   async parserMap(key: string, content: Locator) {
     switch (key) {
       case "採用人数":
-        return "TODO" + "\n" + (await content.innerText());
+        return await this.getInnerText(
+          content.locator("[name='saiyoNinsu']").first()
+        );
       case "選考方法":
         return await content.innerText();
       case "選考結果通知":
