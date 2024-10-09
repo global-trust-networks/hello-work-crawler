@@ -198,7 +198,7 @@ export const spreadSheetColumns = tableStructure
       return ["事業所名", "事業所名カナ"];
     }
     if (key === "所在地") {
-      return ["事業所郵便番号", "事業所住所"];
+      return ["事業所郵便番号", "事業所住所", "事業所都道府県"];
     }
     if (key === "年齢") {
       return ["年齢下限", "年齢上限"];
