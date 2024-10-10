@@ -65,7 +65,6 @@ const main = async () => {
       })
     );
   }
-
   {
     // calculate new offers
     const existingOfferIds = await googleService
@@ -77,16 +76,15 @@ const main = async () => {
       existingOfferIds,
       (item) => item.id
     );
-    const newOfferUrls = newOffers.map((item) => item.url);
-    console.log({ newOfferUrls: newOfferUrls.length });
+    console.log({ newOffers: newOffers.length });
 
-    if (newOfferUrls.length > 0) {
+    if (newOffers.length > 0) {
       // details
       const detailsPage = new OfferDetails();
       await detailsPage.open();
       const rows: string[][] = [];
       for await (const details of detailsPage.getDetails(
-        newOfferUrls.toReversed()
+        newOffers.map((item) => item.url).toReversed()
       )) {
         const row = OfferDetails.createSpreadsheetRow(details);
         rows.push(row);
@@ -101,13 +99,13 @@ const main = async () => {
       if (rows.length > 0) {
         await googleService.prependOfferDetailsToOffers(rows.toReversed());
       }
+
+      await googleService.clearOfferIdsOfPrevious();
+      await googleService.appendOfferIdsToPrevious(
+        newOffers.map(({ id }) => [id])
+      );
     }
-  }
-  {
     await googleService.setDateToPrevious(started);
-    // TODO:
-    // await googleService.clearOfferIdsOfPrevious();
-    // await googleService.appendOfferIdsToPrevious([]);
   }
 };
 main().catch((error) => console.error(error));
