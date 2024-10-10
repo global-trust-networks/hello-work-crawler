@@ -7,6 +7,7 @@ export const defaultPerPage = 30;
 export type Query = {
   keyword?: string;
   perPage?: 10 | 30 | 50;
+  newArrived?: "2days" | "week";
 };
 
 export class OfferSearch {
@@ -50,12 +51,25 @@ export class OfferSearch {
       waitUntil: "domcontentloaded",
     });
 
+    // keyword
     await this.page
       .locator("[name='freeWordInput']")
       .fill(query?.keyword ?? "");
+
+    // newArrived
+    if (query?.newArrived !== undefined) {
+      if (query.newArrived === "2days") {
+        await this.page.locator("#ID_LnewArrivedCKBox1").click();
+      }
+      if (query.newArrived === "week") {
+        await this.page.locator("#ID_LnewArrivedCKBox2").click();
+      }
+    }
+
     await this.page.getByRole("button", { exact: true, name: "検索" }).click();
     await this.page.waitForLoadState("domcontentloaded");
 
+    // perPage
     if (query?.perPage !== undefined) {
       await this.page
         .locator("[name='fwListNaviDispTop']")
