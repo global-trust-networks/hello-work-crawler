@@ -108,4 +108,7 @@ const main = async () => {
     await googleService.setDateToPrevious(started);
   }
 };
-main().catch((error) => console.error(error));
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});

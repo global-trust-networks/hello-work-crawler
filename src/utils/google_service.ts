@@ -5,6 +5,7 @@ export class GoogleService {
 
   constructor() {
     const credentials = process.env.GOOGLE_CREDENTIALS!;
+    console.log({ credentials });
     const auth = new google.auth.GoogleAuth({
       credentials: JSON.parse(
         Buffer.from(credentials, "base64").toString("utf-8")
