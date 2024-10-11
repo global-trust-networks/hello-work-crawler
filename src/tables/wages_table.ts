@@ -67,15 +67,19 @@ export class WagesTable extends BasicTable {
       case "賃金形態等":
         return await content.innerText();
       case "通勤手当":
-        return "TODO" + "\n" + (await content.innerText());
+        return await content.innerText();
+      // return "TODO" + "\n" + (await content.innerText());
       case "賃金締切日":
         return await content.innerText();
       case "賃金支払日":
-        return "TODO" + "\n" + (await content.innerText());
+        return await content.innerText();
+      // return "TODO" + "\n" + (await content.innerText());
       case "昇給":
-        return "TODO" + "\n" + (await content.innerText());
+        return await content.innerText();
+      // return "TODO" + "\n" + (await content.innerText());
       case "賞与":
-        return "TODO" + "\n" + (await content.innerText());
+        return await content.innerText();
+      // return "TODO" + "\n" + (await content.innerText());
       default:
         return "UNDEFINED";
     }

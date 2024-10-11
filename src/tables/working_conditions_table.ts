@@ -19,9 +19,11 @@ export class WorkingConditionsTable extends BasicTable {
       case "退職金制度":
         return await content.innerText();
       case "定年制":
-        return "TODO" + "\n" + (await content.innerText());
+        return await content.innerText();
+      // return "TODO" + "\n" + (await content.innerText());
       case "再雇用制度":
-        return "TODO" + "\n" + (await content.innerText());
+        return await content.innerText();
+      // return "TODO" + "\n" + (await content.innerText());
       case "勤務延長":
         return await content.innerText();
       case "入居可能住宅":

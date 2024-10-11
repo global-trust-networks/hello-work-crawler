@@ -11,15 +11,18 @@ export class WorkingHoursTable extends BasicTable {
   async parserMap(key: string, content: Locator) {
     switch (key) {
       case "就業時間":
-        return "TODO" + "\n" + (await content.innerText());
+        return await content.innerText();
+      // return "TODO" + "\n" + (await content.innerText());
       case "時間外労働時間":
-        return "TODO" + "\n" + (await content.innerText());
+        return await content.innerText();
+      // return "TODO" + "\n" + (await content.innerText());
       case "休憩時間":
         return await content.innerText();
       case "年間休日数":
         return await content.innerText();
       case "休日等":
-        return "TODO" + "\n" + (await content.innerText());
+        return await content.innerText();
+      // return "TODO" + "\n" + (await content.innerText());
       default:
         return "UNDEFINED";
     }

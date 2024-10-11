@@ -17,7 +17,8 @@ export class DisabilitiesTable extends BasicTable {
       case "点字設備":
         return await content.innerText();
       case "階段の手すり":
-        return "TODO" + "\n" + (await content.innerText());
+        return await content.innerText();
+      // return "TODO" + "\n" + (await content.innerText());
       case "建物内の車いす移動":
         return await content.innerText();
       case "休憩室":
