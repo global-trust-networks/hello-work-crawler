@@ -86,6 +86,7 @@ const main = async () => {
       for await (const details of detailsPage.getDetails(
         newOffers.map((item) => item.url).toReversed()
       )) {
+        console.log({ details });
         const row = OfferDetails.createSpreadsheetRow(details);
         rows.push(row);
         if (rows.length >= 100) {
