@@ -9,7 +9,7 @@ const main = async () => {
   const started = new Date();
   const googleService = new GoogleService();
 
-  {
+  try {
     // calculate duration since last update
     const previousDate = await googleService.getDateFromPrevious();
     const temporalStarted = Temporal.Instant.from(started.toISOString());
@@ -64,8 +64,11 @@ const main = async () => {
         return [id, url];
       })
     );
+  } catch (error) {
+    console.error(error);
   }
-  {
+
+  try {
     // calculate new offers
     const existingOfferIds = await googleService
       .getOfferIdsFromOffers()
@@ -107,6 +110,8 @@ const main = async () => {
       );
     }
     await googleService.setDateToPrevious(started);
+  } catch (error) {
+    console.error(error);
   }
 };
 main().catch((error) => {

@@ -22,7 +22,7 @@ export class OfferDetails {
 
   async open() {
     this.browser = await createBrowser();
-    this.page = await this.browser.newPage();
+    this.page = await this.browser.newPage({ ignoreHTTPSErrors: true });
   }
 
   async close() {
