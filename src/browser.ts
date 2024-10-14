@@ -5,9 +5,10 @@ type Args = {
   headless?: string;
 };
 export const createBrowser = async () => {
-  const { headless } = minimist<Args>(process.argv.slice(2));
+  const { executablePath, headless } = minimist<Args>(process.argv.slice(2));
 
   const browser = await chromium.launch({
+    executablePath,
     headless: !(headless === "false"),
   });
   return browser;

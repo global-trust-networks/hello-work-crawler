@@ -13,14 +13,9 @@ RUN pnpm install
 RUN pnpm build
 
 # 
-FROM mcr.microsoft.com/playwright:v1.48.0-noble AS runner
+FROM zenika/alpine-chrome:with-node AS runner
 # 
 WORKDIR /app
 COPY --from=builder /app /app
 
-# Don't run production as root
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nodejs
-USER nodejs
-
-CMD node dist/main.js
+CMD node dist/main.js --executablePath=/usr/bin/chromium-browser
